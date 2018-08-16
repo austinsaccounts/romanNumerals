@@ -3,43 +3,45 @@ $(document).ready(function() {
     event.preventDefault();
     var originalText = $("#original-text").val().toLowerCase();
     var originalTextArray = originalText.split(" ");
-    var latinWord;
 
 
 
     originalTextArray.forEach(function(word) {
-
       var brokenWord = word.split("");
-      testWord = brokenWord.slice();
-
       //vowel condition
+
       if (word.match(/\b[aeiou]/)) {
         $("#result").text(word + "way");
+
       }
       //consonant conditions
       else {
-
+        loop2:
         for(i=0; i < brokenWord.length; i++){
+          // var letter = brokenWord[i];
+          var letter = brokenWord[0];
+          var hold = [];
+          console.log(i);
 
-          var letter = brokenWord[i];
+          if (/[^aeiouq]/.test(letter)){
+            hold = brokenWord.shift().toString();
+            brokenWord.push(hold);
 
-          if (letter.match(/[aeiou]/)) {
-            console.log("vowel");
-            break;
 
-          } else if (letter.match(/qu/)) {
-            var  letter = brokenWord.shift();
-            letter = letter + brokenWord.shift();
-            brokenWord = brokenWord + letter;
-            console.log(brokenWord + "ay");
-            break;
-
-          } else if (letter.match(/[^a,e,i,o,u,q]/)){
-            var letter = brokenWord.shift();
-            console.log(brokenWord + letter +  "ay");
-            break;
+          }
+          else if (/q/.test(letter)) {
+            hold.push(brokenWord.splice(0,2));
+            brokenWord = brokenWord.concat(hold).join("");
+            var print = brokenWord;
+            break loop2;
+          }
+          else if (/[aeiou]/.test(letter)) {
+            brokenWord.push(hold + "ay")
+            var print = brokenWord.join("");
+            break loop2;
           }
         }
+        console.log(brokenWord);
       };
     });
   });
