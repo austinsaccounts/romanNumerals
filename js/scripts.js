@@ -10,38 +10,41 @@ $(document).ready(function() {
       var brokenWord = word.split("");
       //vowel condition
 
-      if (word.match(/\b[aeiou]/)) {
-        $("#result").text(word + "way");
+      if (word.match(/\d/)) {
+        $("#result").append(word + " ");
+      }
+
+      else if (word.match(/\b[aeiou]/)) {
+        $("#result").append(word + "way ");
 
       }
       //consonant conditions
       else {
         loop2:
         for(i=0; i < brokenWord.length; i++){
-          // var letter = brokenWord[i];
           var letter = brokenWord[0];
           var hold = [];
-          console.log(i);
 
+//consonants condition
           if (/[^aeiouq]/.test(letter)){
             hold = brokenWord.shift().toString();
             brokenWord.push(hold);
-
-
           }
+//qu condition
           else if (/q/.test(letter)) {
             hold.push(brokenWord.splice(0,2));
             brokenWord = brokenWord.concat(hold).join("");
-            var print = brokenWord;
             break loop2;
           }
+//vowel condition
           else if (/[aeiou]/.test(letter)) {
-            brokenWord.push(hold + "ay")
-            var print = brokenWord.join("");
+            brokenWord.push(hold)
             break loop2;
           }
         }
-        console.log(brokenWord);
+        answer = brokenWord.toString();
+        answerFormat = answer.split(',').join('');
+        $("#result").append(answerFormat + "ay ");
       };
     });
   });
