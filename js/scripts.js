@@ -1,51 +1,17 @@
 $(document).ready(function() {
-  $("form#input").submit(function(event) {
+  $("#theForm").submit(function(event) {
     event.preventDefault();
-    var originalText = $("#original-text").val().toLowerCase();
-    var originalTextArray = originalText.split(" ");
+    var currentValue = parseInt($("#number-input").val());
+    var outputValue = "";
+    var numeral;
+    var numerals = ([["I",1],["IV",4],["V",5],["IX",9],["X",10],["XL",40],["L",50],["IC",90],["C",100],["CD",400],["D",500],["CM",900],["M",1000]]).reverse();
 
-
-
-    originalTextArray.forEach(function(word) {
-      var brokenWord = word.split("");
-      //vowel condition
-
-      if (word.match(/\d/)) {
-        $("#result").append(word + " ");
+    numerals.forEach(function(numeral) {
+      while ( currentValue >= numeral[1] ) {
+        currentValue -= numeral[1];
+        outputValue = outputValue.concat( numeral[0] );
       }
-
-      else if (word.match(/\b[aeiou]/)) {
-        $("#result").append(word + "way ");
-
-      }
-      //consonant conditions
-      else {
-        loop2:
-        for(i=0; i < brokenWord.length; i++){
-          var letter = brokenWord[0];
-          var hold = [];
-
-//consonants condition
-          if (/[^aeiouq]/.test(letter)){
-            hold = brokenWord.shift().toString();
-            brokenWord.push(hold);
-          }
-//qu condition
-          else if (/q/.test(letter)) {
-            hold.push(brokenWord.splice(0,2));
-            brokenWord = brokenWord.concat(hold).join("");
-            break loop2;
-          }
-//vowel condition
-          else if (/[aeiou]/.test(letter)) {
-            brokenWord.push(hold)
-            break loop2;
-          }
-        }
-        answer = brokenWord.toString();
-        answerFormat = answer.split(',').join('');
-        $("#result").append(answerFormat + "ay ");
-      };
     });
+    alert(outputValue);
   });
 });

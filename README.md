@@ -1,37 +1,35 @@
 # app name: pig latin
 
-#### Description : converts sentences into pig latin 8/8/88
+#### Description : converts Arabic numbers into Roman Numerals
 
-#### By Ben Kiggen, Astin Cummings
+#### By Ben Kiggen, Austin Cummings
 
 ## Specifications
-*	The program doesn’t change non-alphabetical characters
-	*	Input Example: “3”
-	*	Output Example: “3”
 
-	*	The program recognizes a word that begins with a vowel and adds “way” to the end.
-	*	Input Example: “apple”
-	*	Output Example: “appleway
+*	The program only accepts positive integers between 1 and 3,999.
+	*	Input Example: 0
+	*	Output Example: Please enter a positive integer between 1 and 3,999.
 
-	*	The program recognizes a word that begins with a single consonant and moves the consonant to the end, adds “ay”.
-	*	Input Example: “talk”
-	*	Output Example: “alktay”
+*	The program recognizes a single 1, 5, 10, 50, 100, 500, or 1,000 value and returns the corresponding single symbol.
+	*	Input Example: 1, 10
+	*	Output Example: I, X
 
-	*	The program recognizes a word that begins with multiple consecutive consonants and moves the consonants to the end, adds “ay”.
-	*	Input Example: “shake”
-	*	Output Example: “akeshay”
+* The program recognizes a value corresponding to 3 or fewer of the same symbol in a row.
+	*	Input Example: 3, 30
+	*	Output Example: III, XXX
 
-	*	The program recognizes a word that includes “qu” within the beginning consonants and moves the consonants to the end with “qu”, adds “ay”.
-	*	Input Example: “squash”
-	*	Output Example: “ashquay”
+*	The program will not return symbols for values greater than 3,999
+	*	Input Example: 4,000
+	*	Output Example: Please enter a positive integer between 1 and 3,999.
 
-	*	The program recognizes all letters regardless of inconsistent capitalization.
-	*	Input Example: "CaTS CATEReD ThE EveNT"
-	*	Output Example: “atscay ateredcay ethay eventway”
+*	The program will not display more than 3 of the same symbol in a row.
+	*	Input Example: 4
+	*	Output Example: IV
 
-	*	The program translate words in a multiple-word sentence.
-	*	Input Example: "cats catered the event"
-*	*	Output Example: “atscay ateredcay ethay eventway”
+*	The program will display numbers using subtractive method.
+	*	Input Example: 39
+	*	Output Example: XXXIX
+
 
 
 
@@ -44,7 +42,6 @@
 
 ## Support and contact details
 
-linguistics major
 
 ## Technologies Used
 
